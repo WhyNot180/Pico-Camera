@@ -35,7 +35,7 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(Pico-Camera Pico-Camera.c )
+add_executable(Pico-Camera Pico-Camera.c Camera.c)
 
 pico_set_program_name(Pico-Camera "Pico-Camera")
 pico_set_program_version(Pico-Camera "0.1")
@@ -46,7 +46,9 @@ pico_enable_stdio_usb(Pico-Camera 0)
 
 # Add the standard library to the build
 target_link_libraries(Pico-Camera
-        pico_stdlib)
+        pico_stdlib
+        hardware_pio
+        hardware_dma)
 
 # Add the standard include files to the build
 target_include_directories(Pico-Camera PRIVATE
