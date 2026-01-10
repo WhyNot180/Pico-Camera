@@ -1,10 +1,10 @@
-#include "pico/stdlib.h"
-#include "pico/sync.h"
-#include "pico/multicore.h"
-#include "Camera.h"
-#include "hardware/pio.h"
-#include "hardware/dma.h"
+#include <pico/stdlib.h>
+#include <pico/sync.h>
+#include <pico/multicore.h>
+#include <hardware/pio.h>
+#include <hardware/dma.h>
 #include <malloc.h>
+#include "Camera.h"
 #define SYS_CLK_MHZ 200
 
 uint8_t capture_buffer[324*324];

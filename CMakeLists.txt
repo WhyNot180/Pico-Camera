@@ -35,20 +35,23 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(Pico-Camera Pico-Camera.c Camera.c)
+add_executable(Pico-Camera Pico-Camera.c Camera.c usb_descriptors.c)
 
 pico_set_program_name(Pico-Camera "Pico-Camera")
 pico_set_program_version(Pico-Camera "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
 pico_enable_stdio_uart(Pico-Camera 0)
-pico_enable_stdio_usb(Pico-Camera 0)
+pico_enable_stdio_usb(Pico-Camera 1)
 
 # Add the standard library to the build
 target_link_libraries(Pico-Camera
         pico_stdlib
         hardware_pio
-        hardware_dma)
+        hardware_dma
+        pico_lwip
+        tinyusb_device
+        tinyusb_board)
 
 # Add the standard include files to the build
 target_include_directories(Pico-Camera PRIVATE
